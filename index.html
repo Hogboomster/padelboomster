@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robin Hokkanen | Padelvalmennus Porvoo & Vantaa</title>
+<meta name="description" content="Ammattitaitoista, tavoitteellista ja räätälöityä padelvalmennusta kaikentasoisille pelaajille Porvoossa ja Vantaalla. Valmennusta suomeksi, ruotsiksi ja englanniksi. Katso vakioryhmät ja varaa tuntisi!">
+<meta name="keywords" content="padelvalmennus Porvoo, padelvalmennus Vantaa, padelvalmentaja Robin Hokkanen, padel yksityistunti, tyky padel, padel kurssi">
+
+<!-- KORJATTU GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================
+   PERUSVÄRIT JA TYPOGRAFIA
+=========================== */
+:root{--paavari:#111625;--korostus:#e2b13c;--korostus-haalea:#fef8ec;--teksti-tumma:#2d3748;--teksti-vaalea:#ffffff;--tausta-valkoinen:#ffffff;--tausta-harmaa:#f7fafc;}
+body{font-family:'Poppins',sans-serif;background-color:var(--tausta-valkoinen);color:var(--teksti-tumma);margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+.sivu-lohko{display:none;}
+.sivu-lohko.aktiivinen-sivu{display:block;}
+
+/* ===========================
+   NAVIGAATIO
+=========================== */
+.navipalkki{background-color:var(--tausta-valkoinen);padding:20px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #edf2f7;position:sticky;top:0;z-index:1000;}
+.nav-vasen{display:flex;align-items:center;gap:20px;}
+.logo{font-weight:800;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px;color:var(--paavari);}
+.navi-linkit{display:flex;gap:25px;align-items:center;}
+.navi-linkit a{text-decoration:none;color:var(--teksti-tumma);font-weight:600;font-size:0.95rem;transition:color 0.2s;}
+.navi-linkit a:hover,.navi-linkit a.aktiivinen{color:var(--korostus);}
+.nav-cta{background-color:var(--paavari);color:white!important;padding:10px 22px;border-radius:50px;font-size:0.85rem!important;text-transform:uppercase;letter-spacing:0.5px;}
+.nav-cta:hover{background-color:var(--korostus);color:var(--paavari)!important;}
+.some-napit{display:flex;gap:12px;align-items:center;}
+.some-linkki{display:flex;align-items:center;justify-content:center;transition:transform 0.2s ease;}
+.some-linkki:hover{transform:scale(1.1);}
+.some-ikoni{fill:var(--paavari);width:20px;height:20px;transition:fill 0.2s ease;}
+.some-linkki:hover .some-ikoni{fill:var(--korostus);}
+.mobiili-valikko-nappi{display:none;}
+
+@media(max-width:768px){
+.navipalkki{padding:15px 20px;flex-wrap:wrap;}
+.mobiili-valikko-nappi{display:block;background-color:var(--paavari);color:white;border:2px solid var(--korostus);padding:8px 16px;border-radius:8px;font-weight:700;font-size:0.8rem;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;}
+.navi-linkit{display:none;flex-direction:column;width:100%;background:white;margin-top:10px;border-top:1px solid #edf2f7;padding:10px 0;}
+.navi-linkit.auki{display:flex;}
+.navi-linkit a{width:100%;text-align:center;padding:12px 0;border-bottom:1px solid #f7fafc;font-size:1rem;}
+}
+
+/* ===========================
+   HERO-ALUE
+=========================== */
+.hero-container{display:flex;align-items:center;max-width:1100px;margin:60px auto;padding:0 40px;gap:60px;position:relative;}
+.hero-tekstit{flex:1.3;}
+.hero-tekstit .ylatitteli{color:var(--korostus);font-weight:600;text-transform:uppercase;letter-spacing:2px;font-size:0.85rem;margin-bottom:10px;}
+.hero-tekstit h1{font-size:3.2rem;color:var(--paavari);margin:0 0 20px 0;font-weight:700;line-height:1.15;}
+.hero-tekstit p{color:var(--teksti-tumma);font-size:1.05rem;line-height:1.7;margin-bottom:30px;font-weight:300;}
+.hero-lista{list-style:none;padding:0;margin:0 0 35px 0;}
+.hero-lista li{position:relative;padding-left:25px;margin-bottom:12px;font-size:1.05rem;font-weight:400;color:var(--teksti-tumma);}
+.hero-lista li::before{content:"✓";position:absolute;left:0;top:0;color:var(--korostus);font-weight:bold;font-size:1.1rem;}
+.nappi-ryhma{display:flex;gap:15px;flex-wrap:wrap;}
+.nappi-paa{background-color:var(--korostus);color:var(--paavari);padding:15px 35px;text-decoration:none;font-weight:600;border-radius:50px;font-size:0.95rem;transition:all 0.2s;text-transform:uppercase;letter-spacing:0.5px;}
+.nappi-paa:hover{background-color:var(--paavari);color:white;}
+.nappi-toinen{background-color:var(--paavari);color:var(--tausta-valkoinen);padding:15px 30px;text-decoration:none;font-weight:600;border-radius:50px;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s;display:inline-block;}
+.nappi-toinen:hover{background-color:var(--korostus);color:var(--paavari);}
+
+/* BIO-LAATIKKO */
+.bio-teksti-laatikko{position:absolute;right:calc(40% + 20px);left:40px;top:0;bottom:0;opacity:0;visibility:hidden;transform:translateX(30px);transition:all 0.4s cubic-bezier(0.25,1,0.5,1);background-color:var(--tausta-valkoinen);padding:40px;border-radius:20px;box-shadow:0 15px 35px rgba(17,22,37,0.08);border:2px solid var(--korostus);z-index:10;display:flex;flex-direction:column;justify-content:center;}
+.bio-teksti-laatikko h2{color:var(--paavari);margin-top:0;text-transform:uppercase;font-size:1.4rem;font-weight:700;}
+.bio-teksti-laatikko p{font-size:0.95rem;line-height:1.6;color:var(--teksti-tumma);margin-bottom:0;}
+
+.hero-kuva-paikka{flex:0.7;background-color:var(--korostus-haalea);border-radius:20px;min-height:520px;background-size:cover;background-position:center top;position:relative;cursor:pointer;transition:transform 0.3s ease,box-shadow 0.3s ease;z-index:5;display:flex;align-items:flex-end;justify-content:center;padding-bottom:25px;}
+.kuva-opaste-lappu{color:var(--korostus);font-style:italic;font-size:1.1rem;font-weight:600;letter-spacing:0.5px;text-shadow:2px 2px 8px rgba(11,15,24,0.8),0 0 4px rgba(11,15,24,0.5);transition:opacity 0.3s ease,transform 0.3s ease;pointer-events:none;}
+.hero-container.bio-auki .kuva-opaste-lappu{opacity:0;transform:translateY(10px);}
+.hero-container.bio-auki .hero-kuva-paikka{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,0.05);}
+.hero-container.bio-auki .bio-teksti-laatikko{opacity:1;visibility:visible;transform:translateX(0);}
+
+/* ===========================
+   AJANKOHTAISTA
+=========================== */
+.ajankohtaista-säiliö{max-width:1100px;margin:100px auto 60px auto;padding:0 40px;scroll-margin-top:100px;}
+.ajankohtaista-otsikko{color:var(--paavari);font-size:1.8rem;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:30px;border-bottom:2px solid var(--korostus);padding-bottom:10px;}
+.uutis-ruudukko{display:flex;gap:25px;flex-wrap:wrap;}
+.uutis-kortti{background-color:var(--tausta-harmaa);border:1px solid #edf2f7;border-radius:16px;padding:25px;flex:1;min-width:280px;transition:transform 0.3s ease,box-shadow 0.3s ease;}
+.uutis-kortti:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(17,22,37,0.05);}
+.uutis-pvm{font-size:0.8rem;color:#a0aec0;font-weight:600;text-transform:uppercase;margin-bottom:8px;}
+.uutis-kortti h3{color:var(--paavari);margin:0 0 12px 0;font-size:1.2rem;}
+.uutis-kortti p{font-size:0.9rem;line-height:1.6;color:var(--teksti-tumma);margin:0;}
+
+/* ===========================
+   HINNASTO
+=========================== */
+.hinnasto-säiliö{max-width:1000px;margin:40px auto;padding:0 20px;}
+.hinnasto-info{background-color:var(--korostus-haalea);border-left:4px solid var(--korostus);padding:20px;border-radius:0 12px 12px 0;margin-bottom:40px;line-height:1.6;font-size:1.05rem;color:var(--teksti-tumma);}
+.hinnasto-ruudukko{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+.hinnasto-kortti{background:white;border:1px solid #edf2f7;border-radius:16px;padding:30px;flex:1;min-width:300px;max-width:450px;box-shadow:0 10px 25px rgba(0,0,0,0.02);}
+.hinnasto-kortti h3{color:var(--paavari);font-size:1.4rem;margin-top:0;margin-bottom:20px;border-bottom:2px solid var(--korostus);padding-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;}
+.hinta-lohko{margin-bottom:20px;background-color:var(--tausta-harmaa);padding:15px;border-radius:8px;}
+.hinta-otsikko{font-weight:700;color:var(--paavari);font-size:0.9rem;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;}
+.hinta-rivi{display:flex;justify-content:space-between;font-size:0.95rem;margin-top:4px;border-bottom:1px dashed #e2e8f0;padding-bottom:4px;color:var(--teksti-tumma);}
+.hinta-rivi:last-child{border-bottom:none;padding-bottom:0;}
+</style>
+</head>
+<body>
+
+<!-- ==================== NAVIGAATIO ==================== -->
+<nav class="navipalkki">
+    <div class="nav-vasen">
+        <div class="logo">Robin "Hoki" Hokkanen</div>
+
+        <div class="some-napit">
+            <a href="https://instagram.com" target="_blank" class="some-linkki" title="Seuraa Instagramissa">
+                <svg class="some-ikoni" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+
+            <a href="https://wa.me" target="_blank" class="some-linkki" title="Ota yhteys WhatsAppilla">
+                <svg class="some-ikoni" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.66.986 3.296 1.447 5.365 1.448 5.405 0 9.802-4.394 9.805-9.795.002-2.618-1.01-5.079-2.852-6.922C17.065 2.04 14.613.996 12.004.996 6.599.996 2.204 5.392 2.201 10.795c-.001 2.083.548 4.117 1.59 5.892l-.999 3.647 3.856-.98zM16.598 13.99c-.277-.139-1.638-.809-1.892-.901-.253-.093-.438-.139-.623.139-.184.279-.715.901-.876 1.087-.162.186-.323.21-.6.071-.276-.14-1.169-.43-2.227-1.374-.824-.735-1.38-1.642-1.542-1.921-.162-.279-.017-.43.122-.569.124-.125.277-.323.415-.485.138-.161.184-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.053-.225-.542-.451-.469-.622-.477-.16-.007-.344-.008-.528-.008-.185 0-.485.07-.74.347-.253.279-.968.948-.968 2.31 0 1.361.991 2.678 1.129 2.863.139.186 1.952 2.977 4.728 4.172.66.285 1.176.456 1.577.584.664.211 1.269.181 1.747.109.533-.08 1.638-.67 1.869-1.319.23-.648.23-1.203.161-1.319-.069-.117-.253-.186-.529-.327z"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <button class="mobiili-valikko-nappi" onclick="togglaaMobiiliNavi()" aria-label="Avaa valikko">☰ VALIKKO</button>
+
+    <div class="navi-linkit" id="naviLinkkiLaatikko">
+        <a href="#" onclick="vaihdaSivu('etusivu');return false;" id="linkki-etusivu" class="aktiivinen">Etusivu</a>
+        <a href="#" onclick="vaihdaSivu('hinnasto');return false;" id="linkki-hinnasto">Valmennushinnasto</a>
+        <a href="#" onclick="vaihdaSivu('viikkovalmennukset');return false;" id="linkki-viikkovalmennukset">Viikkovalmennukset</a>
+        <a href="#" onclick="vaihdaSivu('tapahtumat');return false;" id="linkki-tapahtumat">Tapahtumat & TYKY</a>
+        <a href="#" onclick="vaihdaSivu('kumppanit');return false;" id="linkki-kumppanit">Yhteistyökumppanit</a>
+        <a href="#" onclick="vaihdaSivu('hinnasto');setTimeout(()=>{document.getElementById('varaus-osio').scrollIntoView({behavior:'smooth'});},100);return false;" class="nav-cta">Varaa valmennus</a>
+    </div>
+</nav>
+
+<!-- ==================== ETUSIVU ==================== -->
+<div id="sivu-etusivu" class="sivu-lohko aktiivinen-sivu">
+
+    <div class="hero-container" id="heroLaatikkoSäiliö">
+
+        <div class="hero-tekstit">
+            <div class="ylatitteli">Padelvalmentajasi Porvoossa ja Vantaalla</div>
+            <h1>Asiakaskeskeistä ja räätälöityä padelvalmennusta sinulle.</h1>
+            <p>Moi! Haluan tarjota tavoitteellista, innostavaa ja ammattitaitoista valmennusta kaikentasoisille pelaajille. Olipa kyseessä ensikosketuksesi lajiin, lyöntien hionta tai tavoitteellinen harjoittelu, otathan yhteyttä minuun niin viemme pelisi yhdessä eteenpäin. Tarjoan valmennusta suomeksi, ruotsiksi sekä englanniksi.</p>
+
+            <ul class="hero-lista">
+                <li><strong>Kattavat valmennukset:</strong> Viikkovalmennukset, ryhmätunnit, yksityistunnit ja paritreenit</li>
+                <li><strong>Kaikille sopiva:</strong> Juniorit, kilpapelaajat, harrastelijat, aloittelijat sekä seniorit</li>
+                <li><strong>Päätoimipaikat:</strong> Padel Arena Porvoo & Let's Padel Porttipuisto</li>
+                <li><strong>Sarjapadel:</strong> Padel Ladies & Padel Gentsin sarjapadelvalmentaja</li>
+            </ul>
+
+            <div class="nappi-ryhma" style="margin-top:35px;">
+                <a href="#" onclick="vaihdaSivu('hinnasto');setTimeout(()=>{document.getElementById('varaus-osio').scrollIntoView({behavior:'smooth'});},100);return false;" class="nappi-paa">Varaa valmennus</a>
+                <a href="#" onclick="vaihdaSivu('hinnasto');return false;" class="nappi-toinen">Katso hinnasto</a>
+                <a href="#" onclick="document.getElementById('ajankohtaista-osio').scrollIntoView({behavior:'smooth'});return false;" class="nappi-toinen">Ajankohtaista</a>
+                <a href="#" onclick="vaihdaSivu('viikkovalmennukset');return false;" class="nappi-toinen">Viikkovalmennukset</a>
+                <a href="#" onclick="vaihdaSivu('tapahtumat');return false;" class="nappi-toinen">TYKY-kyselyt</a>
+            </div>
+        </div>
+
+        <div class="bio-teksti-laatikko">
+            <h2>Robin "Hoki" Hokkanen</h2>
+            <p style="margin-bottom:15px;">Ensikosketukseni padeliin oli Turussa viime vuosikymmenen lopussa, jonka jälkeen laji vei minut mennessään...</p>
+            <p style="margin-bottom:15px;">Koska laji oli vielä tuolloin todella uusi, huomasin, että kysyntää padelvalmentajalle oli paljon...</p>
+            <p style="margin-bottom:15px;">Valmentajana minulle kaikesta palkitsevinta on nähdä pelaajien pitkän aikavälin kehitys...</p>
+            <p>Pidän valmennuksia kaikentasoisille pelaajille aloittelijoista kilparyhmiin...</p>
+            <p style="font-weight:600;margin-top:25px;color:var(--korostus);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.5px;border-top:1px solid rgba(255,255,255,0.05);padding-top:15px;">Sulje esittely klikkaamalla kuvaa tai siirtämällä hiiri pois. 🎾</p>
+        </div>
+
+        <div class="hero-kuva-paikka" id="heroLohkoImage" onclick="togglaaBio()" onmouseenter="avaaBioHiirella()" onmouseleave="suljeBioHiirella()" style="background-image:url('/valmentaja.jpg');" title="Vie hiiri päälle tai klikkaa nähdäksesi bio">
+            <div class="kuva-opaste-lappu">🎾 KATSO ESITTELYNI TÄSTÄ</div>
+        </div>
+
+    </div>
+
+    <div class="ajankohtaista-säiliö" id="ajankohtaista-osio">
+        <h2 class="ajankohtaista-otsikko">Ajankohtaista</h2>
+
+        <div class="uutis-ruudukko">
+            <div class="uutis-kortti" style="border-top:3px solid var(--korostus);">
+                <div class="uutis-pvm">Kausi 2026</div>
+                <h3>Syksyn viikkovalmennukset auki!</h3>
+                <p>Syyskauden viikkovalmennukset alkavat ma 17.elokuuta...</p>
+            </div>
+
+            <div class="uutis-kortti">
+                <div class="uutis-pvm">Kesäkausi</div>
+                <h3>Tehoa peliin kesätreenien avulla</h3>
+                <p>Kesällä on loistava hetki hioa tekniikkaa ja pelisilmää kuntoon...</p>
+            </div>
+
+            <div class="uutis-kortti" style="background-color:var(--korostus-haalea);border:1px solid rgba(226,177,60,0.2);">
+                <div class="uutis-pvm">🔥 Premium-etu Porvoossa</div>
+                <h3>Hyödynnä Padel Arenan Kesäpassi</h3>
+                <p>Muista hyödyntää Padel Arena Porvoon suosittua Kesäpassia...</p>
+                <a href="https://playtomic.com" target="_blank" style="color:var(--paavari);font-weight:700;text-decoration:underline;font-size:0.85rem;display:inline-block;margin-top:15px;text-transform:uppercase;letter-spacing:0.5px;" onmouseover="this.style.color='var(--korostus)'" onmouseout="this.style.color='var(--paavari)'">Lue lisää Kesäpassista →</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- ==================== HINNASTO ==================== -->
+<div id="sivu-hinnasto" class="sivu-lohko">
+
+    <!-- VAMOS‑POPUP -->
+    <div id="varausPopup" style="position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(11,15,24,0.7);display:none;align-items:center;justify-content:center;z-index:9999;backdrop-filter:blur(4px);transition:all 0.3s ease;">
+        <div style="background:white;border:3px solid var(--korostus);padding:40px;border-radius:20px;max-width:450px;width:90%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,0.3);transform:scale(1);animation:popupPamaus 0.3s cubic-bezier(0.175,0.885,0.32,1.275);">
+            <div style="font-size:3.5rem;margin-bottom:15px;animation:palloPomppu 0.6s infinite alternate;">🎾</div>
+            <h3 style="color:var(--paavari);text-transform:uppercase;margin-top:0;font-size:1.4rem;letter-spacing:0.5px;">Vamos!</h3>
+            <p style="color:var(--teksti-tumma);font-size:1rem;line-height:1.6;margin-bottom:25px;">Varauspyyntösi on lähtenyt. Olen sinuun yhteydessä WhatsAppilla mahdollisimman pian!</p>
+            <button onclick="document.getElementById('varausPopup').style.display='none'" style="background-color:var(--paavari);color:white;border:none;padding:12px 35px;font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;border-radius:50px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.backgroundColor='var(--korostus)';this.style.color='var(--paavari)';" onmouseout="this.style.backgroundColor='var(--paavari)';this.style.color='white';">Sulje ikkuna</button>
+        </div>
+    </div>
+
+    <style>
+        @keyframes popupPamaus{from{transform:scale(0.8);opacity:0;}to{transform:scale(1);opacity:1;}}
+        @keyframes palloPomppu{from{transform:translateY(0);}to{transform:translateY(-10px);}}
+    </style>
+
+    <div class="hinnasto-säiliö">
+        <h2 style="text-transform:uppercase;color:var(--paavari);font-size:1.8rem;margin-bottom:10px;">Valmennushinnasto</h2>
+
+        <div class="hinnasto-info">
+            💡 <strong>Kaikki hinnat sisältävät:</strong> ammattitaitoisen valmennuksen, <strong>kenttävuokran</strong> sekä mahdolliset vuokramailat ja pallot treenien ajaksi. Sinulta vaaditaan vain urheiluvaatteet ja oppivan asenteen!
+            <p></p>
+            ℹ️ <strong>HUOM!</strong> Hinnat are ryhmäkohtaisia ja jaetaan osallistujien kesken.
+        </div>
+
+        <div class="hinnasto-ruudukko">
+
+            <!-- Padel Arena Porvoo -->
+            <div class="hinnasto-kortti">
+                <h3>Padel Arena Porvoo</h3>
+
+                <div class="hinta-lohko">
+                    <div class="hinta-otsikko">Ma–Pe klo 07:00–15:00</div>
+                    <div class="hinta-rivi"><span>Yksityis- / Parivalmennus</span><strong>50 € / h</strong></div>
+                    <div class="hinta-rivi"><span>Ryhmävalmennus</span><strong>70 € / h</strong></div>
+                </div>
+
+                <div class="hinta-lohko">
+                    <div class="hinta-otsikko">Ma–Pe klo 16:00–23:00</div>
+                    <div class="hinta-rivi"><span>Kaikki valmennukset</span><strong>90 € / h</strong></div>
+                </div>
+
+                <div class="hinta-lohko" style="margin-bottom:0;">
+                    <div class="hinta-otsikko">La–Su (Koko päivä)</div>
+                    <div class="hinta-rivi"><span>Yksityis- / Parivalmennus</span><strong>60 € / h</strong></div>
+                    <div class="hinta-rivi"><span>Ryhmävalmennus</span><strong>80 € / h</strong></div>
+                </div>
+            </div>
+
+            <!-- Let's Padel Porttipuisto -->
+            <div class="hinnasto-kortti">
+                <h3>Let's Padel Porttipuisto</h3>
+
+                <div class="hinta-lohko">
+                    <div class="hinta-otsikko">Ma–Pe klo 07:00–15:00</div>
+                    <div class="hinta-rivi"><span>Yksityis- / Parivalmennus</span><strong>50 € / h</strong></div>
+                    <div class="hinta-rivi"><span>Ryhmävalmennus</span><strong>70 € / h</strong></div>
+                </div>
+
+                <div class="hinta-lohko">
+                    <div class="hinta-otsikko">Ma–Pe klo 16:00–23:00</div>
+                    <div class="hinta-rivi"><span>Kaikki valmennukset</span><strong>90 € / h</strong></div>
+                </div>
+
+                <div class="hinta-lohko" style="margin-bottom:0;">
+                    <div class="hinta-otsikko">La–Su (Koko päivä)</div>
+                    <div class="hinta-rivi"><span>Yksityis- / Parivalmennus</span><strong>60 € / h</strong></div>
+                    <div class="hinta-rivi"><span>Ryhmävalmennus</span><strong>80 € / h</strong></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== VARAUSLOMAKE ==================== -->
+        <div id="varaus-osio" style="display:flex;gap:40px;margin-top:50px;flex-wrap:wrap;align-items:flex-start;scroll-margin-top:100px;">
+
+            <!-- VASEN INFO -->
+            <div style="flex:1;min-width:300px;max-width:400px;">
+
+                <div style="background-color:var(--korostus-haalea);border-left:4px solid var(--korostus);padding:25px;border-radius:0 16px 16px 0;box-shadow:0 5px 15px rgba(0,0,0,0.01);margin-bottom:25px;">
+                    <h4 style="margin-top:0;color:var(--paavari);text-transform:uppercase;font-size:0.9rem;letter-spacing:0.5px;display:flex;align-items:center;gap:8px;"><span>⚠️</span> HUOMIO VARAUKSISTA</h4>
+                    <p style="font-size:0.9rem;line-height:1.6;color:var(--teksti-tumma);margin:0;">Tämä on joustava varauspyyntö. Valmennuksen lopullinen toteutuminen ja hinta vahvistetaan aina erikseen riippuen aikataulustani sekä hallin kenttätilanteesta. Varmistan kentän puolestasi!</p>
+                </div>
+
+                <div style="padding:5px 25px;">
+                    <h5 style="margin:0 0 8px 0;color:var(--paavari);text-transform:uppercase;font-size:0.85rem;letter-spacing:0.5px;">Valmennukset muilla halleilla?</h5>
+                    <p style="font-size:0.85rem;line-height:1.5;color:#718096;margin:0;">Valmennan pyynnöstä myös muissa halleissa Porvoon ja Vantaan lähialueilla. Hinta sovitaan tapauskohtaisesti hallin kenttävuokrien mukaan.</p>
+                </div>
+
+                <div style="padding:5px 25px;">
+                    <h5 style="margin:0 0 8px 0;color:var(--paavari);text-transform:uppercase;font-size:0.85rem;letter-spacing:0.5px;">Ota yhteyttä suoraan puhelimitse?</h5>
+                    <p style="font-size:0.85rem;line-height:1.5;color:#718096;margin:0;">Voit myös halutessasi ottaa minuun yhteyttä suoraan puhelimitse, joko soittaen tai viestillä puh: 040 5051881. Vastaan mahdollisimman pian!</p>
+                </div>
+
+            </div>
+
+            <!-- OIKEA LOMAKE -->
+            <div style="flex:1.5;min-width:320px;background:white;border:1px solid #edf2f7;padding:35px;border-radius:16px;box-shadow:0 10px 30px rgba(17,22,37,0.03);">
+
+                <h3 style="margin-top:0;color:var(--paavari);text-transform:uppercase;font-size:1.1rem;letter-spacing:0.5px;border-bottom:2px solid var(--korostus);padding-bottom:12px;margin-bottom:25px;">Jätä varauspyyntö minulle</h3>
+
+                <form action="https://web3forms.com" method="POST" id="varausLomakeElementti">
+
+                    <input type="hidden" name="access_key" value="986f34bd-cc64-42b7-84fe-db2e5bd0cbb6">
+                    <input type="hidden" name="subject" value="Uusi valmennusvarauspyynto nettisivuilta">
+                    <input type="hidden" name="redirect" value="javascript:naytaVamosPopup();">
+
+                    <div style="margin-bottom:20px;">
+                        <label style="font-weight:600;font-size:0.75rem;text-transform:uppercase;color:#718096;letter-spacing:0.5px;">Etunimi ja sukunimi</label>
+                        <input type="text" name="Asiakkaan nimi" required placeholder="Matti Meikäläinen" style="width:100%;padding:14px;border-radius:8px;border:1px solid #e2e8f0;margin-top:6px;box-sizing:border-box;font-family:inherit;font-size:0.95rem;">
+                    </div>
+
+                    <div style="margin-bottom:20px;">
+                        <label style="font-weight:600;font-size:0.75rem;text-transform:uppercase;color:#718096;letter-spacing:0.5px;">Puhelinnumero (WhatsApp)</label>
+                        <input type="tel" name="Puhelinnumero" required placeholder="+358 40 123 4567" style="width:100%;padding:14px;border-radius:8px;border:1px solid #e2e8f0;margin-top:6px;box-sizing:border-box;font-family:inherit;font-size:0.95rem;">
+                    </div>
+
+                    <div style="margin-bottom:20px;">
+                        <label style="font-weight:600;font-size:0.75rem;text-transform:uppercase;color:#718096;letter-spacing:0.5px;">Osallistujamäärä / Ryhmäkoko</label>
+                        <input type="text" name="Ryhmakoko" required placeholder="Esim. 1 henki, 4 henkeä tai kaveriporukka" style="width:100%;padding:14px;border-radius:8px;border:1px solid #e2e8f0;margin-top:6px;box-sizing:border-box;font-family:inherit;font-size:0.95rem;">
+                    </div>
+
+                    <div style="margin-bottom:20px;">
+                        <label style="font-weight:600;font-size:0.75rem;text-transform:uppercase;color:#718096;letter-spacing:0.5px;">Toivottu Padelhalli / Paikkakunta</label>
+                        <input type="text" name="Toivottu halli" required placeholder="Esim. Padel Arena Porvoo tai Let's Padel" style="width:100%;padding:14px;border-radius:8px;border:1px solid #e2e8f0;margin-top:6px;box-sizing:border-box;font-family:inherit;font-size:0.95rem;">
+                        <span style="font-size:0.75rem;color:#a0aec0;display:block;margin-top:4px;">Voit myös ehdottaa jotain muuta hallia, jossa haluat treenata.</span>
+                    </div>
+
+                    <div style="margin-bottom:25px;">
+                        <label style="font-weight:600;font-size:0.75rem;text-transform:uppercase;color:#718096;letter-spacing:0.5px;">Toivotut ajankohdat ja päivät</label>
+                        <input type="text" name="Aikatoiveet" required placeholder="Esim. Arkisin klo 16 jälkeen, viikonloput tai tietty pvm" style="width:100%;padding:14px;border-radius:8px;border:1px solid #e2e8f0;margin-top:6px;box-sizing:border-box;font-family:inherit;font-size:0.95rem;">
+                    </div>
+
+                    <button type="submit" style="background-color:var(--paavari);color:white;padding:16px;border:none;width:100%;font-size:0.95rem;border-radius:50px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 12px rgba(17,22,37,0.1);" onmouseover="this.style.backgroundColor='var(--korostus)';this.style.color='var(--paavari)';" onmouseout="this.style.backgroundColor='var(--paavari)';this.style.color='white';">Lähetä varauspyyntö valmentajalle →</button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- ==================== VIIKKOVALMENNUKSET ==================== -->
+<div id="sivu-viikkovalmennukset" class="sivu-lohko">
+    <div class="sivun-sisalto" style="max-width:1100px;margin:40px auto;padding:0 20px;">
+        
+        <h2 style="text-transform:uppercase;color:var(--paavari);font-size:1.8rem;margin-bottom:10px;">
+            Viikkovalmennukset
+        </h2>
+
+        <div style="background-color:var(--korostus-haalea);border-left:4px solid var(--korostus);padding:25px;border-radius:0 16px 16px 0;box-shadow:0 5px 15px rgba(0,0,0,0.01);margin-bottom:40px;line-height:1.7;font-size:1.05rem;color:var(--teksti-tumma);">
+            ❓ <strong>Mitä ovat viikkovalmennukset?</strong><br>
+            Viikkovalmennukset ovat vakiovuoroja, jotka sopivat täydellisesti pelaajille, jotka haluavat varmistaa paikan koko kauden ajaksi säännölliseen treenaamiseen...
+            <br><br>
+            ℹ️ <strong>Ryhmätasoista:</strong> Ryhmät pyritään rakentamaan tasaisiksi. Olethan yhteydessä minuun WhatsAppilla, niin kartoitetaan sinulle sopiva ryhmä!
+        </div>
+
+        <h3 style="margin-top:0;color:var(--paavari);text-transform:uppercase;font-size:1.2rem;letter-spacing:0.5px;border-bottom:2px solid var(--korostus);padding-bottom:10px;margin-bottom:30px;">
+            Syksyn vakioryhmät (17.8.–20.12)
+        </h3>
+
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;">
+
+            <!-- MAANANTAI -->
+            <div style="background-color:var(--tausta-harmaa);border:1px solid #edf2f7;border-radius:16px;padding:20px;flex:1;min-width:230px;max-width:320px;display:flex;flex-direction:column;">
+                <div style="border-bottom:2px solid var(--korostus);padding-bottom:10px;margin-bottom:15px;">
+                    <strong style="color:var(--paavari);font-size:1.1rem;display:block;">Maanantai</strong>
+                    <span style="color:#718096;font-size:0.8rem;font-weight:600;">📍 Padel Arena Porvoo</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;font-size:0.85rem;font-weight:600;text-align:center;">
+                    <span style="background:#dcfce7;color:#166534;padding:8px;border-radius:8px;">16:00–17:00<br><small>4 paikkaa vapaana</small></span>
+                    <span style="background:#fee2e2;color:#991b1b;padding:8px;border-radius:8px;text-decoration:line-through;opacity:0.5;">17:00–18:00<br><small>Täynnä</small></span>
+                    <span style="background:#fef3c7;color:#92400e;padding:8px;border-radius:8px;">18:00–19:00<br><small>2 paikkaa vapaana</small></span>
+                    <span style="background:#fef3c7;color:#92400e;padding:8px;border-radius:8px;">19:00–20:00<br><small>1 paikka vapaana</small></span>
+                </div>
+            </div>
+
+            <!-- TIISTAI -->
+            <div style="background-color:var(--tausta-harmaa);border:1px solid #edf2f7;border-radius:16px;padding:20px;flex:1;min-width:230px;max-width:320px;display:flex;flex-direction:column;opacity:0.7;">
+                <div style="border-bottom:1px solid #e2e8f0;padding-bottom:10px;margin-bottom:15px;">
+                    <strong style="color:var(--paavari);font-size:1.1rem;display:block;">Tiistai</strong>
+                    <span style="color:#a0aec0;font-size:0.8rem;font-weight:600;">Vapaapäivä</span>
+                </div>
+                <div style="color:#a0aec0;font-size:0.85rem;font-weight:600;text-align:center;margin:auto 0;font-style:italic;padding:20px 0;">
+                    Ei viikkovalmennuksia. Voit ehdottaa yksityistuntia tähän!
+                </div>
+            </div>
+
+            <!-- KESKIVIIKKO -->
+            <div style="background-color:var(--tausta-harmaa);border:1px solid #edf2f7;border-radius:16px;padding:20px;flex:1;min-width:230px;max-width:320px;display:flex;flex-direction:column;">
+                <div style="border-bottom:2px solid var(--korostus);padding-bottom:10px;margin-bottom:15px;">
+                    <strong style="color:var(--paavari);font-size:1.1rem;display:block;">Keskiviikko</strong>
+                    <span style="color:#718096;font-size:0.8rem;font-weight:600;">📍 Let's Padel Vantaa</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;font-size:0.85rem;font-weight:600;text-align:center;">
+                    <span style="background:#dcfce7;color:#166534;padding:8px;border-radius:8px;">16:00–17:00<br><small>4 paikkaa vapaana</small></span>
+                    <span style="background:#fee2e2;color:#991b1b;padding:8px;border-radius:8px;text-decoration:line-through;opacity:0.5;">17:00–18:00<br><small>Täynnä</small></span>
+                    <span style="background:#fee2e2;color:#991b1b;padding:8px;border-radius:8px;text-decoration:line-through;opacity:0.5;">18:00–19:00<br><small>Täynnä</small></span>
+                    <span style="background:#dcfce7;color:#166534;padding:8px;border-radius:8px;">19:00–20:00<br><small>4 paikkaa vapaana</small></span>
+                    <span style="background:#fee2e2;color:#991b1b;padding:8px;border-radius:8px;text-decoration:line-through;opacity:0.5;">20:00–21:00<br><small>Täynnä</small></span>
+                </div>
+            </div>
+
+            <!-- TORSTAI -->
+            <div style="background-color:var(--tausta-harmaa);border:1px solid #edf2f7;border-radius:16px;padding:20px;flex:1;min-width:230px;max-width:320px;display:flex;flex-direction:column;">
+                <div style="border-bottom:2px solid var(--korostus);padding-bottom:10px;margin-bottom:15px;">
+                    <strong style="color:var(--paavari);font-size:1.1rem;display:block;">Torstai</strong>
+                    <span style="color:#718096;font-size:0.8rem;font-weight:600;">📍 Padel Arena Porvoo</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;font-size:0.85rem;font-weight:600;text-align:center;">
+                    <span style="background:#dcfce7;color:#166534;padding:8px;border-radius:8px;">16:00–17:00<br><small>4 paikkaa vapaana</small></span>
+                    <span style="background:#dcfce7;color:#166534;padding:8px;border-radius:8px;">17:00–18:00<br><small>4 paikkaa vapaana</small></span>
+                    <span style="background:#dcfce7;color:#166534;padding:8px;border-radius:8px;">18:00–19:00<br><small>3 paikkaa vapaana</small></span>
+                    <span style="background:#dcfce7;color:#166534;padding:8px;border-radius:8px;">19:00–20:00<br><small>3 paikkaa vapaana</small></span>
+                    <span style="background:#dcfce7;color:#166534;padding:8px;border-radius:8px;">20:00–21:00<br><small>3 paikkaa vapaana</small></span>
+                </div>
+            </div>
+
+            <!-- PERJANTAI & LAUANTAI -->
+            <div style="background-color:var(--tausta-harmaa);border:1px solid #edf2f7;border-radius:16px;padding:20px;flex:1;min-width:230px;max-width:320px;display:flex;flex-direction:column;opacity:0.6;">
+                <div style="border-bottom:1px solid #e2e8f0;padding-bottom:10px;margin-bottom:15px;">
+                    <strong style="color:var(--paavari);font-size:1.1rem;display:block;">Perjantai & Lauantai</strong>
+                    <span style="color:#a0aec0;font-size:0.8rem;font-weight:600;">Tapahtumat & Kisat</span>
+                </div>
+                <div style="color:#a0aec0;font-size:0.85rem;font-weight:600;text-align:center;margin:auto 0;font-style:italic;padding:20px 0;">
+                    Ei vakiovuoroja. Voit ehdottaa tapahtumia tai yksityistunteja tähän.
+                </div>
+            </div>
+
+            <!-- SUNNUNTAI -->
+            <div style="background-color:var(--tausta-harmaa);border:1px solid #edf2f7;border-radius:16px;padding:20px;flex:1;min-width:230px;max-width:320px;display:flex;flex-direction:column;">
+                <div style="border-bottom:2px solid var(--korostus);padding-bottom:10px;margin-bottom:15px;">
+                    <strong style="color:var(--paavari);font-size:1.1rem;display:block;">Sunnuntai</strong>
+                    <span style="color:#718096;font-size:0.8rem;font-weight:600;">📍 Kaikki hallit vapaana</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- ==================== TAPAHTUMAT & TYKY ==================== -->
+<div id="sivu-tapahtumat" class="sivu-lohko">
+    <div class="sivun-sisalto" style="max-width:1100px;margin:40px auto;padding:0 20px;">
+
+        <h2 style="text-transform:uppercase;color:var(--paavari);font-size:1.8rem;margin-bottom:10px;">
+            Tapahtumat & TYKY-päivät
+        </h2>
+
+        <p style="font-size:1.1rem;color:var(--teksti-tumma);margin-bottom:40px;">
+            Etsitkö laadukasta ohjelmaa tiimillesi, kaveriporukalle tai yritykselle? Räätälöidään teille täydellinen padelpäivä Porvoossa tai Vantaalla.
+        </p>
+
+        <div style="display:flex;gap:30px;flex-wrap:wrap;align-items:flex-start;margin-bottom:40px;">
+
+            <!-- VASEN PÄÄKORTTI -->
+            <div style="flex:1.5;min-width:340px;background:var(--korostus-haalea);border:3px solid var(--korostus);border-radius:20px;padding:35px;box-shadow:0 15px 35px rgba(17,22,37,0.06);position:relative;">
+
+                <div style="position:absolute;top:-15px;left:20px;background:var(--paavari);color:white;padding:4px 15px;border-radius:20px;font-size:0.75rem;font-weight:bold;text-transform:uppercase;letter-spacing:1px;">
+                    Suositelluin valinta
+                </div>
+
+                <h3 style="color:var(--paavari);margin-top:0;text-transform:uppercase;font-size:1.3rem;letter-spacing:0.5px;border-bottom:2px solid var(--korostus);padding-bottom:10px;margin-bottom:20px;">
+                    ⭐ Ohjatut TYKY- & Ryhmäpäivät
+                </h3>
+
+                <p style="font-size:1rem;line-height:1.6;color:var(--teksti-tumma);margin-bottom:20px;">
+                    Jätä järjestelyt minulle ja luodaan tiimillesi tai kaveriporukallesi unohtumaton urheilupäivä! Ohjattu ohjelma sopii täydellisesti myös ensikertalaisille.
+                </p>
+
+                <ul style="padding-left:20px;font-size:0.95rem;line-height:1.7;color:var(--teksti-tumma);margin:0 0 25px 0;font-weight:600;">
+                    <li>Lajitekniikan opastus & ammattitaitoiset pelivinkit</li>
+                    <li>Hauskat peliharjoitukset & vauhdikas lopputurnaus</li>
+                    <li><strong>Sisältää aina kentät, pallot, vuokramailat ja ohjauksen!</strong></li>
+                </ul>
+
+                <div style="background:rgba(255,255,255,0.7);padding:15px 20px;border-radius:12px;font-size:0.85rem;line-height:1.5;color:var(--teksti-tumma);margin-bottom:25px;border:1px solid rgba(226,177,60,0.2);">
+                    <strong style="color:var(--paavari);display:block;text-transform:uppercase;font-size:0.8rem;margin-bottom:5px;letter-spacing:0.5px;">
+                        🔥 Valittavat huippupuitteet tapahtumallesi:
+                    </strong>
+                    • <strong>Padel Arena Porvoo:</strong> 3 kenttää, sauna, lounge ja äänentoisto.<br>
+                    • <strong>Let's Padel Vantaa:</strong> 5 kenttää, isot oleskelutilat ja sohvaryhmät.
+                </div>
+
+                <div style="background:var(--paavari);padding:15px;border-radius:8px;font-size:0.9rem;font-weight:600;text-align:center;color:white;box-shadow:0 4px 10px rgba(0,0,0,0.05);">
+                    💬 Pyydä räätälöity tarjous suoraan minulta: WhatsApp tai sähköposti!
+                </div>
+            </div>
+
+            <!-- OIKEAT KORTIT -->
+            <div style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:25px;">
+
+                <!-- JULKISET TAPAHTUMAT -->
+                <div style="background:white;border:1px solid #edf2f7;border-radius:16px;padding:25px;box-shadow:0 10px 25px rgba(0,0,0,0.01);">
+                    <h3 style="color:var(--paavari);margin-top:0;text-transform:uppercase;font-size:1rem;letter-spacing:0.5px;border-bottom:1px solid #e2e8f0;padding-bottom:8px;margin-bottom:12px;">
+                        Julkiset kilpailut
+                    </h3>
+                    <p style="font-size:0.9rem;line-height:1.6;color:#718096;margin-bottom:0;">
+                        Avoimet turnaukset, Americano-pelit ja Mixty-kisat löytyvät Playtomicista hallien kohdalta.
+                    </p>
+                    <div style="font-weight:600;font-size:0.8rem;color:#a0aec0;font-style:italic;margin-top:15px;">
+                        📱 Katso kisoja Playtomicista
+                    </div>
+                </div>
+
+                <!-- HALLIN VUOKRAUS -->
+                <div style="background:white;border:1px solid #edf2f7;border-radius:16px;padding:25px;box-shadow:0 10px 25px rgba(0,0,0,0.01);display:flex;flex-direction:column;justify-content:space-between;">
+                    <div>
+                        <h3 style="color:var(--paavari);margin-top:0;text-transform:uppercase;font-size:1rem;letter-spacing:0.5px;border-bottom:1px solid #e2e8f0;padding-bottom:8px;margin-bottom:12px;">
+                            Hallin vuokraus
+                        </h3>
+                        <p style="font-size:0.9rem;line-height:1.6;color:#718096;margin-bottom:15px;">
+                            Omatoimiset kenttävaraukset tai saunatilojen vuokraukset voi tiedustella suoraan halleilta:
+                        </p>
+                    </div>
+
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                        <a href="https://padelarenaporvoo.com/" target="_blank"
+                           style="background-color:#f1f5f9;color:var(--paavari);padding:10px;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.8rem;text-align:center;border:1px solid #e2e8f0;transition:all 0.2s;"
+                           onmouseover="this.style.backgroundColor='#e2e8f0'" onmouseout="this.style.backgroundColor='#f1f5f9'">
+                            Padel Arena Porvoo Linkki →
+                        </a>
+
+                        <a href="https://letspadel.fi" target="_blank"
+                           style="background-color:#f1f5f9;color:var(--paavari);padding:10px;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.8rem;text-align:center;border:1px solid #e2e8f0;transition:all 0.2s;"
+                           onmouseover="this.style.backgroundColor='#e2e8f0'" onmouseout="this.style.backgroundColor='#f1f5f9'">
+                            Let's Padel Vantaa Linkki →
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== YHTEISTYÖKUMPPANIT ==================== -->
+<div id="sivu-kumppanit" class="sivu-lohko">
+    <div class="kumppanit-säiliö">
+
+        <h2 class="kumppanit-otsikko">Yhteistyökumppanit</h2>
+
+        <p style="font-size:1.1rem;color:var(--teksti-tumma);margin-bottom:40px;">
+            Yhdessä laadukkaan ja kehittävän padeltoiminnan puolesta. Teen yhteistyötä alueen parhaiden hallien ja yhteisöjen kanssa.
+        </p>
+
+        <div class="kumppanit-ruudukko">
+
+            <!-- Kumppani 1 -->
+            <div class="kumppani-kortti">
+                <div class="kumppani-kuva-pohja" style="background-image:url('PadelArenaPorvoo.jpg');"></div>
+                <div class="kumppani-sisalto">
+                    <h3>Padel Arena Porvoo</h3>
+                    <p>Moderni ja viihtyisä padelhalli Porvoon sydämessä. Halli tarjoaa huipputason kentät ja lämminhenkisen padelyhteisön.</p>
+                </div>
+            </div>
+
+            <!-- Kumppani 2 -->
+            <div class="kumppani-kortti">
+                <div class="kumppani-kuva-pohja" style="background-image:url('LetsPadel.jpg');"></div>
+                <div class="kumppani-sisalto">
+                    <h3>Let's Padel Porttipuisto</h3>
+                    <p>Huippuluokan padelkeskus Vantaan Porttipuistossa. Erinomainen pelitila ja laadukkaat alustat mahdollistavat dynaamiset valmennukset.</p>
+                </div>
+            </div>
+
+            <!-- Kumppani 3 -->
+            <div class="kumppani-kortti">
+                <div class="kumppani-kuva-pohja" style="background-image:url('PLPG.jpg');"></div>
+                <div class="kumppani-sisalto">
+                    <h3>Padel Ladies & Padel Gents</h3>
+                    <p>Virallinen ja aktiivinen sarjapadel-yhteisö. Toimin joukkueiden sarjavalmentajana ja autan pelaajia kehittämään pelillistä varmuutta.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- ==================== FOOTER ==================== -->
+<footer class="sivusto-footer" style="background-color:var(--paavari);padding:25px 40px;margin-top:80px;border-top:3px solid var(--korostus);">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;font-size:0.9rem;color:#a0aec0;">
+
+        <!-- VASEMMALLA -->
+        <div style="color:white;font-weight:500;">
+            Robin Hokkanen TMI <span style="color:#4a5568;margin:0 8px;">|</span>
+            <span style="color:#718096;font-size:0.85rem;">Y-tunnus: 3320866-8</span>
+        </div>
+
+        <!-- KESKIOSA: YHTEYSTIEDOT -->
+        <div style="display:flex;gap:25px;flex-wrap:wrap;align-items:center;">
+
+            <!-- WHATSAPP -->
+            <a href="https://wa.me" target="_blank"
+               style="display:flex;align-items:center;gap:8px;color:white;text-decoration:none;font-weight:600;transition:color 0.2s ease;"
+               onmouseover="this.style.color='var(--korostus)';this.querySelector('.footer-svg').style.fill='var(--korostus)'"
+               onmouseout="this.style.color='white';this.querySelector('.footer-svg').style.fill='white'">
+                <svg class="footer-svg" style="fill:white;width:18px;height:18px;transition:fill 0.2s ease;" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.66.986 3.296 1.447 5.365 1.448 5.405 0 9.802-4.394 9.805-9.795.002-2.618-1.01-5.079-2.852-6.922C17.065 2.04 14.613.996 12.004.996 6.599.996 2.204 5.392 2.201 10.795c-.001 2.083.548 4.117 1.59 5.892l-.999 3.647 3.856-.98zM16.598 13.99c-.277-.139-1.638-.809-1.892-.901-.253-.093-.438-.139-.623.139-.184.279-.715.901-.876 1.087-.162.186-.323.21-.6.071-.276-.14-1.169-.43-2.227-1.374-.824-.735-1.38-1.642-1.542-1.921-.162-.279-.017-.43.122-.569.124-.125.277-.323.415-.485.138-.161.184-.277.277-.462.093-.185.046-.347-.023-.485-.069-.139-.623-1.501-.853-2.053-.225-.542-.451-.469-.622-.477-.16-.007-.344-.008-.528-.008-.185 0-.485.07-.74.347-.253.279-.968.948-.968 2.31 0 1.361.991 2.678 1.129 2.863.139.186 1.952 2.977 4.728 4.172.66.285 1.176.456 1.577.584.664.211 1.269.181 1.747.109.533-.08 1.638-.67 1.869-1.319.23-.648.23-1.203.161-1.319-.069-.117-.253-.186-.529-.327z"/>
+                </svg>
+                <span>040 5051881</span>
+            </a>
+
+            <!-- SÄHKÖPOSTI -->
+            <a href="mailto:robin.hokkanen@icloud.com"
+               style="display:flex;align-items:center;gap:8px;color:white;text-decoration:none;font-weight:600;transition:color 0.2s ease;"
+               onmouseover="this.style.color='var(--korostus)';this.querySelector('.footer-svg').style.fill='var(--korostus)'"
+               onmouseout="this.style.color='white';this.querySelector('.footer-svg').style.fill='white'">
+                <svg class="footer-svg" style="fill:white;width:18px;height:18px;transition:fill 0.2s ease;" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <span>robin.hokkanen@icloud.com</span>
+            </a>
+
+            <!-- INSTAGRAM -->
+            <a href="https://instagram.com" target="_blank"
+               style="display:flex;align-items:center;gap:8px;color:white;text-decoration:none;font-weight:600;transition:color 0.2s ease;"
+               onmouseover="this.style.color='var(--korostus)';this.querySelector('.footer-svg').style.fill='var(--korostus)'"
+               onmouseout="this.style.color='white';this.querySelector('.footer-svg').style.fill='white'">
+                <svg class="footer-svg" style="fill:white;width:18px;height:18px;transition:fill 0.2s ease;" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+                <span>@padelboomster</span>
+            </a>
+        </div>
+
+        <!-- OIKEA REUNA -->
+        <div style="font-size:0.8rem;color:#4a5568;display:flex;align-items:center;gap:15px;">
+            <div>© 2026 Robin Hokkanen</div>
+            <div>
+                <a href="/admin" style="color:#4a5568;text-decoration:none;transition:color 0.2s;"
+                   onmouseover="this.style.color='var(--korostus)'"
+                   onmouseout="this.style.color='#4a5568'">
+                    Ylläpito
+                </a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<!-- ==================== SCRIPTIT ==================== -->
+<script>
+let klikattuAuki = false;
+
+function togglaaMobiiliNavi() {
+    const laatikko = document.getElementById("naviLinkkiLaatikko");
+    if (!laatikko) return;
+    laatikko.classList.toggle("auki");
+}
+
+function togglaaBio() {
+    const herolohko = document.getElementById("heroLaatikkoSäiliö");
+    if (!herolohko) return;
+    klikattuAuki = !klikattuAuki;
+    herolohko.classList.toggle("bio-auki", klikattuAuki);
+}
+
+function avaaBioHiirella() {
+    const herolohko = document.getElementById("heroLaatikkoSäiliö");
+    if (herolohko) herolohko.classList.add("bio-auki");
+}
+
+function suljeBioHiirella() {
+    if (!klikattuAuki) {
+        const herolohko = document.getElementById("heroLaatikkoSäiliö");
+        if (herolohko) herolohko.classList.remove("bio-auki");
+    }
+}
+
+function naytaVamosPopup() {
+    const popup = document.getElementById('varausPopup');
+    if (popup) popup.style.display = 'flex';
+    const lomake = document.getElementById('varausLomakeElementti');
+    if (lomake) lomake.reset();
+}
+
+function vaihdaSivu(sivunId) {
+    document.querySelectorAll('.sivu-lohko').forEach(s => s.classList.remove('aktiivinen-sivu'));
+    document.getElementById('sivu-' + sivunId).classList.add('aktiivinen-sivu');
+
+    document.querySelectorAll('.navi-linkit a').forEach(l => l.classList.remove('aktiivinen'));
+    const aktiivinenLinkki = document.getElementById('linkki-' + sivunId);
+    if (aktiivinenLinkki) aktiivinenLinkki.classList.add('aktiivinen');
+
+    const laatikko = document.getElementById("naviLinkkiLaatikko");
+    if (laatikko && laatikko.classList.contains("auki")) laatikko.classList.remove("auki");
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
