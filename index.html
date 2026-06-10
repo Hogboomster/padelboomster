@@ -18,23 +18,8 @@
 body{font-family:'Poppins',sans-serif;background-color:var(--tausta-valkoinen);color:var(--teksti-tumma);margin:0;padding:0;-webkit-font-smoothing:antialiased;}
 .sivu-lohko{display:none;}
 .sivu-lohko.aktiivinen-sivu{display:block;}
-.kumppani-kuva-pohja {
-    width: 200px;
-    height: 200px; /* voit säätää esim. 180–240px */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 12px 12px 0 0;
-}
-   .valmentaja-kuva {
-    width: 200px;
-    height: 360px; /* sama korkeus kuin etusivun keltainen laatikko */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 12px;
-}
-
+.kumppani-kuva-pohja {width: 200px;height: 200px;background-size: cover;background-position: center;background-repeat: no-repeat;border-radius: 12px 12px 0 0;}
+.valmentaja-kuva {width: 200px;height: 360px;background-size: cover;background-position: center;background-repeat: no-repeat;border-radius: 12px;}
 
 /* ===========================
    NAVIGAATIO
@@ -182,14 +167,14 @@ body{font-family:'Poppins',sans-serif;background-color:var(--tausta-valkoinen);c
         </div>
 
         <div class="hero-kuva-paikka" 
-     id="heroLohkoImage" 
-     onclick="togglaaBio()" 
-     onmouseenter="avaaBioHiirella()" 
-     onmouseleave="suljeBioHiirella()" 
-     style="background-image:url('valmentaja.jpg');" 
-     title="Vie hiiri päälle tai klikkaa nähdäksesi bio">
+           id="heroLohkoImage" 
+           onclick="togglaaBio()" 
+           onmouseenter="avaaBioHiirella()" 
+           onmouseleave="suljeBioHiirella()" 
+           style="background-image:url('valmentaja.jpg');" 
+           title="Vie hiiri päälle tai klikkaa nähdäksesi bio">
          
-    <div class="kuva-opaste-lappu">🎾 KATSO ESITTELYNI TÄSTÄ</div>
+       <div class="kuva-opaste-lappu">🎾 KATSO ESITTELYNI TÄSTÄ</div>
 
 </div>
 
