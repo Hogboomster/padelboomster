@@ -318,14 +318,14 @@ body{font-family:'Poppins',sans-serif;background-color:var(--tausta-valkoinen);c
                 </div>
             </div>
 
-            <!-- OIKEA LOMAKE -->
+           <!-- OIKEA LOMAKE -->
             <div style="flex:1.5;min-width:320px;background:white;border:1px solid #edf2f7;padding:35px;border-radius:16px;box-shadow:0 10px 30px rgba(17,22,37,0.03);">
                 <h3 style="margin-top:0;color:var(--paavari);text-transform:uppercase;font-size:1.1rem;letter-spacing:0.5px;border-bottom:2px solid var(--korostus);padding-bottom:12px;margin-bottom:25px;">Jätä varauspyyntö minulle</h3>
                 
-                <form action="https://api.web3forms.com/submit" method="POST" id="varausLomakeElementti">
+                <!-- KORJATTU EMISSURATKAISU: Pysyy omalla sivulla ja laukaisee popupin modernisti taustalla -->
+                <form id="varausLomakeElementti" onsubmit="lahetaLomakeLivenä(event);">
                     <input type="hidden" name="access_key" value="529403eb-b451-4e52-8cd2-79ea3dca4d10">
                     <input type="hidden" name="subject" value="Uusi valmennusvarauspyynto nettisivuilta">
-                    <input type="hidden" name="redirect" value="javascript:naytaVamosPopup();">
 
                     <div style="margin-bottom:20px;">
                         <label style="font-weight:600;font-size:0.75rem;text-transform:uppercase;color:#718096;letter-spacing:0.5px;">Etunimi ja sukunimi</label>
@@ -358,6 +358,37 @@ body{font-family:'Poppins',sans-serif;background-color:var(--tausta-valkoinen);c
         </div>
     </div>
 </div>
+
+<!-- LISÄTÄÄN NYT SE TAUSTALÄHETYS-SKRIPTI TÄHÄN SAMALLA VALMIIKSI -->
+<script>
+function lahetaLomakeLivenä(event) {
+    event.preventDefault(); // Estää sivua hyppäämästä pois
+    
+    const lomake = document.getElementById('varausLomakeElementti');
+    const formData = new FormData(lomake);
+    
+    // Ammutaan tiedot taustalla sisään
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            // Kun viesti meni läpi, pamautetaan se upea Vamos-popup ruudulle!
+            const popup = document.getElementById('varausPopup');
+            if (popup) popup.style.display = 'flex';
+            
+            // Tyhjennetään lomake siististi valmiiksi uutta viestiä varten
+            lomake.reset();
+        } else {
+            alert('Lähetyksessä tapahtui virhe. Yritä uudelleen.');
+        }
+    })
+    .catch(error => {
+        alert('Yhteysvirhe. Yritä hetken kuluttua uudelleen.');
+    });
+}
+</script>
 
 <!-- ==================== VIIKKOVALMENNUKSET ==================== -->
 <div id="sivu-viikkovalmennukset" class="sivu-lohko">
