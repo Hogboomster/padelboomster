@@ -33,9 +33,27 @@ body{font-family:'Poppins',sans-serif;background-color:var(--tausta-valkoinen);c
 .nav-cta{background-color:var(--paavari);color:white!important;padding:10px 22px;border-radius:50px;font-size:0.85rem!important;text-transform:uppercase;letter-spacing:0.5px;}
 .nav-cta:hover{background-color:var(--korostus);color:var(--paavari)!important;}
 .some-napit{display:flex;gap:12px;align-items:center;}
-.some-linkki{display:flex;align-items:center;justify-content:center;transition:transform 0.2s ease;}
-.some-linkki:hover{transform:scale(1.1);}
-.some-ikoni{fill:var(--paavari);width:20px;height:20px;transition:fill 0.2s ease;}
+.some-linkki {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.some-linkki:hover {
+    color: var(--korostus);
+}
+
+.some-ikoni {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: fill 0.2s ease;
+}
 .some-linkki:hover .some-ikoni{fill:var(--korostus);}
 .mobiili-valikko-nappi{display:none;}
 
