@@ -33,16 +33,21 @@ body{font-family:'Poppins',sans-serif;background-color:var(--tausta-valkoinen);c
 .nav-cta:hover{background-color:var(--korostus);color:var(--paavari)!important;}
 .some-napit{display:flex;gap:12px;align-items:center;}
 .some-linkki {
-    color: var(--paavari);
-    display: flex;
+    color: var(--paavari); /* Ylhäällä tumma väri */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 .some-linkki:hover {
-    color: var(--korostus);
+    color: var(--korostus) !important;
+    transform: scale(1.1);
+}
+/* Pakotetaan footerin sisällä olevat napit valkoisiksi, jotta ne erottuvat tummalta taustalta */
+.sivusto-footer .some-linkki {
+    color: var(--teksti-vaalea) !important;
 }
 .some-ikoni {
     width: 20px;
