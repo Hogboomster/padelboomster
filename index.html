@@ -81,11 +81,66 @@ body{font-family:'Poppins',sans-serif;background-color:var(--tausta-valkoinen);c
 }
 .mobiili-valikko-nappi{display:none;}
 @media(max-width:768px){
-.navipalkki{padding:15px 20px;flex-wrap:wrap;}
-.mobiili-valikko-nappi{display:block;background-color:var(--paavari);color:white;border:2px solid var(--korostus);padding:8px 16px;border-radius:8px;font-weight:700;font-size:0.8rem;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;}
-.navi-linkit{display:none;flex-direction:column;width:100%;background:white;margin-top:10px;border-top:1px solid #edf2f7;padding:10px 0;}
-.navi-linkit.auki{display:flex;}
-.navi-linkit a{width:100%;text-align:center;padding:12px 0;border-bottom:1px solid #f7fafc;font-size:1rem;}
+    /* 1. PILOTETAAN KUVA LEVEYDEN OPTIMOIMISEKSI */
+    .hero-kuva-paikka {
+        display: none !important;
+    }
+    
+    .navipalkki{
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+    
+    .mobiili-valikko-nappi{
+        display: block;
+        background-color: var(--paavari);
+        color: white;
+        border: 2px solid var(--korostus);
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    /* 2. KORJATTU JA KESKITETTY MOBIILIDROP-DOWN (EI KARKAA OIKEALLE) */
+    .navi-linkit {
+        display: none; 
+        flex-direction: column;
+        width: 100% !important;     /* Ottaa tasan koko ruudun leveyden */
+        left: 0 !important;          /* Pakottaa alkamaan aivan vasemmasta reunasta */
+        right: 0 !important;         /* Estää karkaamisen oikealle */
+        margin: 15px 0 0 0 !important; /* Siisti väli yläpalkkiin, nollaa sivumarginaalit */
+        padding: 10px 0 !important;
+        background: #ffffff !important;
+        border-top: 1px solid #edf2f7;
+        box-sizing: border-box !important;
+    }
+    
+    .navi-linkit.auki {
+        display: flex !important; 
+    }
+    
+    /* 3. KESKITETÄÄN LINKKITEKSTIT TÄYDELLISESTI RUUDULLE */
+    .navi-linkit a {
+        width: 100% !important;
+        text-align: center !important; /* Pakottaa tekstit suoraan keskelle */
+        padding: 14px 0 !important;
+        border-bottom: 1px solid #f7fafc;
+        font-size: 1rem;
+        box-sizing: border-box !important;
+    }
+    
+    /* 4. MOBIILIN CTA-NAPPI KESKELLE OMAKSI RIVIKSEEN */
+    .nav-cta {
+        margin: 10px auto 5px auto !important; /* Keskittää napin automaattisesti */
+        display: inline-block !important;
+        width: auto !important;
+        max-width: 90%;
+        padding: 12px 35px !important;
+    }
 }
 
 /* ===========================
