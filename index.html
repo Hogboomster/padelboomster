@@ -52,18 +52,26 @@ body{font-family:'Poppins',sans-serif;background-color:var(--tausta-valkoinen);c
     transform: scale(1.1);
 }
 
-/* Pakotetaan footerin (alatunnisteen) sisällä olevat tekstilinkit pysymään valkoisina */
-.sivusto-footer a,
-.sivusto-footer a:link,
-.sivusto-footer a:visited {
+/* PAKOTETAAN FOOTERIN LINKIT JOUSTAVIKSI VAAKAJONOIKSI */
+.sivusto-footer .some-linkki,
+.sivusto-footer .some-linkki:link,
+.sivusto-footer .some-linkki:visited {
     color: #ffffff !important;
     text-decoration: none;
+    display: inline-flex !important; /* Pakottaa tekstin ja logon vierekkäin */
+    align-items: center;
+    gap: 8px;
+    width: auto !important;   /* POISTETAAN SE 32px LUKITUS */
+    height: auto !important;  /* POISTETAAN SE 32px LUKITUS */
+    padding: 5px 10px;
+    font-weight: 600;
     transition: color 0.2s ease;
 }
 
-/* Kun hiiri viedään footerin linkkien päälle, nekin muuttuvat kullaksi */
-.sivusto-footer a:hover {
+/* Kun hiiri viedään footerin linkkien päälle, ne muuttuvat kullaksi */
+.sivusto-footer .some-linkki:hover {
     color: var(--korostus) !important;
+    background: transparent !important;
 }
 .some-ikoni {
     width: 20px;
